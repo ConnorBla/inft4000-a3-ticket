@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "TicketHub",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Purchase": {
+      "post": {
+        "tags": [
+          "Purchase"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerPurchase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerPurchase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerPurchase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CustomerPurchase": {
+        "required": [
+          "address",
+          "city",
+          "concertId",
+          "country",
+          "creditCard",
+          "email",
+          "expiration",
+          "name",
+          "phone",
+          "postalCode",
+          "province",
+          "quantity",
+          "securityCode"
+        ],
+        "type": "object",
+        "properties": {
+          "concertId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phone": {
+            "minLength": 1,
+            "type": "string",
+            "format": "tel"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "creditCard": {
+            "minLength": 1,
+            "type": "string",
+            "format": "credit-card"
+          },
+          "expiration": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "securityCode": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "address": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "city": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "province": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "postalCode": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "country": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
