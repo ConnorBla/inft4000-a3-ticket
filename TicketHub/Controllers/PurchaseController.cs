@@ -54,5 +54,11 @@ namespace TicketHub.Controllers
 
             return Ok("Thanks " + purchase.Name.Split(' ')[0] + ", your purchase has been added to the queue!");
         }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("Hello from the PurchaseController!");
+        }
     }
 }
