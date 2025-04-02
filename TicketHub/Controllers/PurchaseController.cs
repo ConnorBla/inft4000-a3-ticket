@@ -49,8 +49,10 @@ namespace TicketHub.Controllers
             QueueClient qc = new QueueClient(connectionString, queueName);
 
             string message = JsonSerializer.Serialize(purchase);
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(message);
+            var base64 = System.Convert.ToBase64String(plainTextBytes);
 
-            await qc.SendMessageAsync(message);
+            await qc.SendMessageAsync(base64);
 
             return Ok("Thanks " + purchase.Name.Split(' ')[0] + ", your purchase has been added to the queue!");
         }
