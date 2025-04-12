@@ -37,7 +37,7 @@ namespace TicketHub.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
+
             string queueName = "purchase";
             string? connectionString = _configuration["AzureStorageConnectionString"];
 
@@ -54,7 +54,10 @@ namespace TicketHub.Controllers
 
             await qc.SendMessageAsync(base64);
 
-            return Ok("Thanks " + purchase.Name.Split(' ')[0] + ", your purchase has been added to the queue!");
+            return Ok(new
+            {
+                Message = $"Thanks {purchase.Name.Split(' ')[0]}, your purchase has been added to the queue!"
+            });
         }
 
         [HttpGet]
